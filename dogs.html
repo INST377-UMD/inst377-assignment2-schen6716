@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>INST377 - Dog Gallery</title>
+    <link rel="stylesheet" href="assignment2.css">
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-slider@1.0.0/simple-slider.min.js"></script>
+    <script src="dogs.js" defer></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="stocks.html">Stocks</a></li>
+            <li><a href="dogs.html">Dogs</a></li>
+        </ul>
+    </nav>
+
+    <main class="dogs-content">
+        <h1>Dog Gallery</h1>   
+        <div class="dog-carousel-container">
+            <div class="slider" id="dog-carousel">
+                <!-- Images will be loaded here by JS -->
+            </div>
+            <div class="carousel-controls">
+                <button id="prev-slide" class="custom-btn">⟨ Prev</button>
+                <button id="next-slide" class="custom-btn">Next ⟩</button>
+            </div>
+        </div>
+        
+        <div class="dog-breeds-container">
+            <h2>Dog Breeds</h2>
+            <div id="breed-buttons" class="breed-buttons-grid">
+                <!-- Buttons will be loaded here by JS -->
+            </div>
+        </div>
+        
+        <div id="breed-info-container" class="breed-info" style="display: none;">
+            <h2 id="breed-name">Breed Name</h2>
+            <p id="breed-description">Description will appear here</p>
+            <p><strong>Life Span:</strong> <span id="breed-life">X-Y years</span></p>
+        </div>
+    </main>
+
+    <div class="audio-instructions">
+        <h3>Voice Commands</h3>
+        <p>Say "Load dog breed &lt;breed name&gt;" to show breed information</p>
+        <div class="audio-controls">
+            <button id="audio-on" class="custom-btn">Turn On Listening</button>
+            <button id="audio-off" class="custom-btn">Turn Off Listening</button>
+        </div>
+    </div>
+</body>
+</html>

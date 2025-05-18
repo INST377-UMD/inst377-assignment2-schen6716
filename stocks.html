@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>INST377 - Stock Market Explorer</title>
+    <link rel="stylesheet" href="assignment2.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="stocks.js" defer></script>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="stocks.html">Stocks</a></li>
+            <li><a href="dogs.html">Dogs</a></li>
+        </ul>
+    </nav>
+
+    <main class="stocks-content">
+        <div class="stock-header">
+            <h1>Let's chart some stocks!</h1>
+        </div>
+        
+        <div class="stock-search">
+            <input type="text" id="stock-ticker" placeholder="Enter stock ticker (e.g., AAPL)" value="AAPL">
+            <div class="time-range-selector">
+                <button class="time-range-btn active" data-days="30">30 Days</button>
+                <button class="time-range-btn" data-days="60">60 Days</button>
+                <button class="time-range-btn" data-days="90">90 Days</button>
+            </div>
+            <button id="search-stock" class="custom-btn">Search</button>
+        </div>
+        
+        <div class="chart-area">
+            <div class="chart-container">
+            <canvas id="stock-chart" height="400"></canvas>
+            </div>
+        </div>
+        
+        <div class="stock-table-container">
+            <h2>Top 5 Reddit Stocks</h2>
+            <table id="reddit-stocks">
+                <thead>
+                    <tr>
+                        <th>TICKER</th>
+                        <th>COMMENT COUNT</th>
+                        <th>SENTIMENT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/AMC" target="_blank">AMC</a></td>
+                        <td>53</td>
+                        <td><img src="https://static.thenounproject.com/png/3328202-200.png" class="sentiment-icon" alt="Bullish"> Bullish</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/TSLA" target="_blank">TSLA</a></td>
+                        <td>27</td>
+                        <td><img src="https://static.thenounproject.com/png/3328202-200.png" class="sentiment-icon" alt="Bullish"> Bullish</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/GME" target="_blank">GME</a></td>
+                        <td>42</td>
+                        <td><img src="https://static.thenounproject.com/png/3328202-200.png" class="sentiment-icon" alt="Bullish"> Bullish</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/AAPL" target="_blank">AAPL</a></td>
+                        <td>18</td>
+                        <td><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/bearish-1850183-1570390.png" class="sentiment-icon" alt="Bearish"> Bearish</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/MSFT" target="_blank">MSFT</a></td>
+                        <td>15</td>
+                        <td><img src="https://static.thenounproject.com/png/3328202-200.png" class="sentiment-icon" alt="Bullish"> Bullish</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+    </main>
+
+    <div class="audio-instructions">
+        <h3>Voice Commands</h3>
+        <ul>
+            <li><strong>Lookup stock:</strong> "Lookup AAPL"</li>
+            <li><strong>Change color:</strong> "Change the color to blue"</li>
+            <li><strong>Navigate:</strong> "Navigate to dogs"</li>
+            <li><strong>Test:</strong> "Hello"</li>
+        </ul>
+        <div class="audio-controls">
+            <button id="audio-on" class="custom-btn">Turn On Listening</button>
+            <button id="audio-off" class="custom-btn">Turn Off Listening</button>
+        </div>
+    </div>

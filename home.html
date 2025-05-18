@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class Activities - [Page Name]</title>
+    <link rel="stylesheet" href="assignment2.css">
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="stocks.html">Stocks</a></li>
+            <li><a href="dogs.html">Dogs</a></li>
+        </ul>
+    </nav>
+    <main class="home-content">
+        <h1>INST377 - Activities</h1>
+        <p>These are some different activities we can try!</p>
+        
+        <div class="activity-buttons">
+            <a href="stocks.html" class="custom-btn">Stocks</a>
+            <a href="dogs.html" class="custom-btn">Dogs</a>
+        </div>
+        
+        <div class="quote-container">
+            <h2>Quote of the Page Load</h2>
+            <p class="quote-text" id="quote-text">Loading quote...</p>
+            <p class="quote-author" id="quote-author"></p>
+        </div>
+    </main>
+
+    <div class="audio-instructions">
+        <h3>Voice Command Instructions</h3>
+        <p><strong>First click "Turn On Listening", then allow microphone access when prompted</strong></p>
+        
+        <ul>
+            <li><strong>Say hello:</strong> "Hello"</li>
+            <li><strong>Change color:</strong> "Change the color to red" (or any color)</li>
+            <li><strong>Navigate:</strong> "Navigate to stocks" or "Navigate to dogs"</li>
+        </ul>
+        
+        <div class="audio-controls">
+            <button id="audio-on" class="custom-btn">Turn On Listening</button>
+            <button id="audio-off" class="custom-btn">Turn Off Listening</button>
+        </div>
+        
+        <p id="voice-status" style="margin-top: 10px; font-style: italic;"></p>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+       // Fetch and display a random quote from ZenQuotes
+        function fetchRandomQuote() {
+            // Add timestamp to URL to prevent caching
+            const timestamp = new Date().getTime();
+            fetch(`https://zenquotes.io/api/random?_=${timestamp}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data[0] && data[0].q) {
+                        document.getElementById('quote-text').textContent = `"${data[0].q}"`;
+                        document.getElementById('quote-author').textContent = `— ${data[0].a}`;
+                    } else {
+                        throw new Error('Invalid quote data received');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching quote:', error);
+                    // Fallback quotes
+                    const fallbackQuotes = [
+                        {q: "Every artist dips his brush in his own soul, and paints his own nature into his pictures.", a: "Henry Ward Beecher"},
+                        {q: "The only way to do great work is to love what you do.", a: "Steve Jobs"},
+                        {q: "Life is what happens when you're busy making other plans.", a: "John Lennon"}
+                    ];
+                    const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+                    document.getElementById('quote-text').textContent = `"${randomFallback.q}"`;
+                    document.getElementById('quote-author').textContent = `— ${randomFallback.a}`;
+                });
+        }
+
+        // Fetch quote when page loads
+        document.addEventListener('DOMContentLoaded', fetchRandomQuote);
+    </script>
+</body>
+</html>
